@@ -249,3 +249,17 @@ section{padding:6rem 5vw}
   .examples{padding-top:3rem}
   .contact{padding-bottom:3.5rem}
 }
+
+/* ===== Ritmo vertical v2: márgenes de sección más compactos y coherentes ===== */
+section{padding:3.5rem 5vw}
+.problem{padding-bottom:1.5rem}
+.process{padding-top:1.5rem}
+.price{padding-top:5.5rem;padding-bottom:5.5rem}
+.contact{padding-bottom:4rem}
+@media(max-width:760px){
+  section{padding:2.75rem 5vw}
+  .problem{padding-bottom:1rem}
+  .process{padding-top:1rem}
+  .price{padding-top:4rem;padding-bottom:4rem}
+  .contact{padding-bottom:3rem}
+}
