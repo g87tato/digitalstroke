@@ -235,3 +235,17 @@ label.check a{text-decoration-thickness:1px;text-underline-offset:.2em}
 @media(prefers-reduced-motion:reduce){.win .inner,.ex .win{transition:none}}
 .ex.peek .inner{transition-delay:1.1s}
 .ex:hover .inner{transition-delay:0s}
+
+/* ===== Ritmo vertical: menos vacío entre secciones ===== */
+section{padding:6rem 5vw}
+.problem{padding-bottom:2.5rem}
+.process{padding-top:2.5rem}
+.examples{padding-top:4.5rem}
+.contact{padding-bottom:5rem}
+@media(max-width:760px){
+  section{padding:4rem 5vw}
+  .problem{padding-bottom:1.5rem}
+  .process{padding-top:1.5rem}
+  .examples{padding-top:3rem}
+  .contact{padding-bottom:3.5rem}
+}
