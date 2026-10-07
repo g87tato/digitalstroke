@@ -1,0 +1,60 @@
+:root{--bg:#0B0B0C;--fg:#F4F1EA;--lime:#C6FF3D;--red:#FF4D2E;--mut:#8d8a83;--paper:#F4F1EA;--ink:#0B0B0C}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:400 18px/1.55 'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+#ink{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,.nav,footer{position:relative;z-index:1}
+em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--lime)}
+h1,h2,h3{line-height:.98;letter-spacing:-.03em}
+h1{font-size:clamp(3rem,10vw,9rem);font-weight:700}
+h2{font-size:clamp(2rem,5.5vw,4.5rem);margin-bottom:2rem;font-weight:700}
+section{padding:7rem 5vw;max-width:1300px;margin:auto}
+.nav{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:.9rem 5vw;background:#0b0b0cd9;backdrop-filter:blur(10px);z-index:10}
+.nav nav{display:flex;gap:1.5rem;align-items:center}
+.nav a{color:var(--fg);text-decoration:none;font-size:.95rem}
+.logo{color:var(--fg)}
+.btn{display:inline-block;background:var(--lime);color:var(--ink)!important;padding:1rem 1.8rem;border:2px solid var(--lime);border-radius:0;font:700 1rem 'Space Grotesk';text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-4px,-4px);box-shadow:6px 6px 0 var(--red)}
+.btn-sm{padding:.5rem 1rem;font-size:.9rem}
+.btn-ghost{background:transparent;color:var(--fg)!important;border-color:var(--fg)}
+.hero{padding-top:5rem;min-height:88vh}
+.tag{display:inline-flex;gap:.6rem;align-items:center;border:1px solid var(--mut);padding:.3rem .9rem;border-radius:99px;font-size:.85rem;margin-bottom:1.5rem}
+.dot{width:8px;height:8px;background:var(--lime);border-radius:50%;animation:p 1.4s infinite}
+@keyframes p{50%{opacity:.2}}
+.strike{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:.08em;color:var(--mut)}
+.hl{background:linear-gradient(transparent 60%,var(--red) 60%)}
+.lead{max-width:36rem;margin:2rem 0;font-size:1.3rem}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+.hint{color:var(--mut);font-size:.85rem;margin-top:1.5rem}
+.marquee{overflow:hidden;background:var(--lime);color:var(--ink);padding:1rem 0;transform:rotate(-1.5deg);margin:2rem -2vw;white-space:nowrap}
+.marquee div{display:inline-block;animation:m 28s linear infinite}
+.marquee span{font:700 1.8rem 'Space Grotesk';margin:0 1.5rem}
+.marquee span::after{content:"✦";margin-left:3rem;color:var(--red)}
+@keyframes m{to{transform:translateX(-50%)}}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.cols article{border:1px solid #333;padding:2rem}
+.cols h3{font-size:1.6rem;margin-bottom:.6rem}
+.cols .win{background:var(--paper);color:var(--ink);transform:rotate(1.2deg)}
+.process ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:#333}
+.process li{background:var(--bg);padding:2rem}
+.process li span{color:var(--lime);font-weight:700}
+.process h3{font-size:1.7rem;margin:.6rem 0}
+.process p{color:var(--mut)}
+.price{background:var(--paper);color:var(--ink);max-width:none}
+.price .card{max-width:520px;margin:auto;border:3px solid var(--ink);padding:2.5rem;box-shadow:12px 12px 0 var(--red);background:#fff}
+.price .tag{border-color:var(--ink)}
+.amount{font:700 7rem/1 'Space Grotesk';letter-spacing:-.05em}
+.amount small{font-size:2rem}
+.amount i{font-size:1rem;font-weight:400}
+.price ul{margin:1.5rem 0 2rem;padding-left:1.2rem}
+.price li{padding:.2rem 0}
+.faq details{border-top:1px solid #333;padding:1.2rem 0}
+.faq summary{cursor:pointer;font-size:1.4rem;font-weight:500}
+.faq p{color:var(--mut);margin-top:.8rem}
+form{display:grid;gap:1.2rem;max-width:600px}
+label{display:grid;gap:.4rem;font-size:.9rem;color:var(--mut)}
+input,textarea{background:transparent;border:0;border-bottom:2px solid var(--fg);color:var(--fg);font:inherit;padding:.6rem 0;outline:0}
+input:focus,textarea:focus{border-color:var(--lime)}
+footer{padding:3rem 5vw;border-top:1px solid #333;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;color:var(--mut)}
+@media(max-width:640px){.nav nav a:not(.btn){display:none}.amount{font-size:5rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}

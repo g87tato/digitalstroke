@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="trazodigital">
+  <title>trazodigital</title>
+  <!-- marca: un trazo a mano que dibuja una T y termina en un píxel -->
+  <g fill="none" stroke="#C6FF3D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 38 C 34 26, 52 50, 74 36 S 108 30, 118 34"/>
+    <path d="M66 36 C 62 62, 70 86, 60 112"/>
+  </g>
+  <rect x="104" y="100" width="24" height="24" fill="#FF4D2E"/>
+  <g font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="700" fill="currentColor">
+    <text x="150" y="88" font-size="64" letter-spacing="-2">trazo</text>
+    <text x="150" y="124" font-size="26" font-weight="500" letter-spacing="6" fill="#C6FF3D">DIGITAL</text>
+  </g>
+</svg>
