@@ -143,3 +143,100 @@ document.querySelectorAll('[data-wa]').forEach(a =>
     io.observe(el);
   });
 })();
+
+// Hilo de trazo: cuelga de la lámpara y se va dibujando al hacer scroll hasta el formulario.
+(() => {
+  const lamp = document.querySelector('.lamp');
+  const h1 = document.querySelector('.hero h1');
+  if (!lamp || !h1) return; // solo en la portada
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(NS, 'svg');
+  svg.id = 'thread'; svg.setAttribute('aria-hidden', 'true');
+  const mk = (tag, cls) => { const e = document.createElementNS(NS, tag); e.setAttribute('class', cls); svg.appendChild(e); return e; };
+  const guide = mk('path', 't-guide'), outline = mk('path', 't-out'), line = mk('path', 't-line'),
+        dome = mk('path', 't-dome'), tip = mk('circle', 't-tip');
+  tip.setAttribute('r', 6);
+  document.body.appendChild(svg);
+  document.documentElement.classList.add('threaded');
+
+  let cum = [], lens = [], total = 0, minDrawn = 0, raf = 0;
+
+  function update() {
+    raf = 0;
+    if (!total) return;
+    let drawn = total;
+    if (!calm) {
+      const target = scrollY + innerHeight * 0.62;
+      let lo = 0, hi = cum.length - 1;
+      while (lo < hi) { const mid = (lo + hi) >> 1; if (cum[mid] > target) hi = mid; else lo = mid + 1; }
+      drawn = Math.max(lens[lo], minDrawn);
+      if (scrollY + innerHeight >= document.documentElement.scrollHeight - 6) drawn = total;
+    }
+    drawn = Math.min(drawn, total);
+    const dash = drawn + ' ' + total;
+    line.style.strokeDasharray = dash; outline.style.strokeDasharray = dash;
+    if (calm || drawn >= total) { tip.style.display = 'none'; return; }
+    const p = line.getPointAtLength(drawn);
+    tip.style.display = ''; tip.setAttribute('cx', p.x); tip.setAttribute('cy', p.y);
+  }
+
+  function build() {
+    svg.setAttribute('height', 0);
+    const sx = scrollX, sy = scrollY;
+    const W = document.documentElement.clientWidth, H = document.documentElement.scrollHeight;
+    svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    const at = el => { const r = el.getBoundingClientRect(); return { l: r.left + sx, t: r.top + sy, b: r.bottom + sy, w: r.width, h: r.height }; };
+
+    const L = at(lamp), lx = Math.round(L.l + L.w / 2), ly = Math.round(L.b);
+    const dw = W <= 1100 ? 60 : 92, dh = dw / 2;
+    const lane = Math.max(8, Math.round(at(h1).l - (W <= 560 ? 12 : 36)));
+    const heroB = Math.round(at(document.querySelector('.hero')).b);
+    const btn = document.querySelector('#lead button');
+    const B = btn ? at(btn) : null;
+    const endY = B ? Math.round(B.t + B.h / 2) : H - 200;
+    const endX = B ? Math.max(lane + 24, Math.round(B.l - 14)) : lane + 120;
+
+    let d = 'M' + lx + ' 0 L' + lx + ' ' + ly, y;
+    if (W <= 560) {
+      y = Math.round(ly + dh + 26);
+      d += ' L' + lx + ' ' + (y - 30) + ' C' + lx + ' ' + y + ' ' + (lane + 60) + ' ' + (y - 6) + ' ' + lane + ' ' + (y + 18);
+      y += 18;
+    } else {
+      const yb = Math.max(heroB - 120, ly + dh + 60), ys = Math.max(heroB + 10, yb + 90);
+      d += ' L' + lx + ' ' + yb
+        + ' C' + lx + ' ' + (yb + 70) + ' ' + (lx - 40) + ' ' + (ys - 14) + ' ' + (lx - 200) + ' ' + ys
+        + ' C' + (lx - 420) + ' ' + (ys + 14) + ' ' + (lane + 260) + ' ' + (ys - 14) + ' ' + (lane + 70) + ' ' + (ys + 8)
+        + ' C' + (lane + 10) + ' ' + (ys + 12) + ' ' + lane + ' ' + (ys + 40) + ' ' + lane + ' ' + (ys + 90);
+      y = ys + 90;
+    }
+    const yStop = Math.max(y + 200, endY - 200);
+    let side = 1;
+    while (y + 420 < yStop) {
+      d += ' C' + (lane + 7 * side) + ' ' + (y + 130) + ' ' + (lane - 7 * side) + ' ' + (y + 290) + ' ' + lane + ' ' + (y + 420);
+      y += 420; side = -side;
+    }
+    d += ' L' + lane + ' ' + yStop
+      + ' C' + lane + ' ' + (yStop + 90) + ' ' + (endX - 140) + ' ' + (endY + 10) + ' ' + endX + ' ' + endY;
+
+    [guide, outline, line].forEach(p => p.setAttribute('d', d));
+    dome.setAttribute('d', 'M' + (lx - dw / 2) + ' ' + (ly + dh) + ' A' + (dw / 2) + ' ' + dh + ' 0 0 1 ' + (lx + dw / 2) + ' ' + (ly + dh) + ' Z');
+
+    total = line.getTotalLength();
+    minDrawn = ly + dh + 22;
+    const N = 600; lens = []; cum = []; let m = 0;
+    for (let i = 0; i <= N; i++) {
+      const len = total * i / N, p = line.getPointAtLength(len);
+      m = Math.max(m, p.y); lens.push(len); cum.push(m);
+    }
+    update();
+  }
+
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  let t; const rebuild = () => { clearTimeout(t); t = setTimeout(build, 120); };
+  addEventListener('resize', rebuild);
+  addEventListener('load', build);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  if ('ResizeObserver' in window) new ResizeObserver(rebuild).observe(document.body);
+  build();
+})();

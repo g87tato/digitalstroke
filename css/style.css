@@ -132,3 +132,15 @@ h2{letter-spacing:-.035em}
 }
 .nav .btn-sm{white-space:nowrap}
 @media(max-width:360px){.nav .btn-sm{padding:.45rem .7rem;font-size:.8rem}}
+
+/* ===== Hilo de trazo ===== */
+#thread{position:absolute;left:0;top:0;pointer-events:none;z-index:5;overflow:visible}
+.t-guide{fill:none;stroke:#55544f;stroke-width:3;stroke-linecap:round;stroke-dasharray:1 14}
+.t-out{fill:none;stroke:#0B0B0C;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.t-line{fill:none;stroke:#C6FF3D;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.t-dome{fill:#C6FF3D;filter:drop-shadow(0 0 14px rgba(198,255,61,.55))}
+.t-tip{fill:#C6FF3D;stroke:#0B0B0C;stroke-width:3;filter:drop-shadow(0 0 10px rgba(198,255,61,.85))}
+.threaded .lamp{background:none;animation:none}
+.threaded .lamp::after{display:none}
+@media(max-width:560px){.t-line{stroke-width:3}.t-out{stroke-width:7}}
+@media(prefers-reduced-motion:reduce){.t-tip{display:none}}
