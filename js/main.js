@@ -95,22 +95,34 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   const root = document.documentElement;
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Luz de cursor: solo con ratón (no táctil) y sin "menos movimiento".
-  if (!calm && matchMedia('(pointer: fine)').matches) {
+  // Luz que sigue al ratón o al dedo (se desactiva con "reducir movimiento").
+  if (!calm) {
     const g = document.createElement('div');
     g.id = 'glow'; g.setAttribute('aria-hidden', 'true');
     document.body.appendChild(g);
-    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0, off = 0;
     const loop = () => {
-      cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+      cx += (tx - cx) * 0.18; cy += (ty - cy) * 0.18;
       g.style.transform = `translate(${cx}px,${cy}px)`;
       raf = (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.5) ? requestAnimationFrame(loop) : 0;
     };
-    addEventListener('mousemove', e => {
-      tx = e.clientX; ty = e.clientY; g.classList.add('on');
+    const move = (x, y, snap) => {
+      tx = x; ty = y;
+      if (snap) { cx = x; cy = y; }
+      g.classList.add('on');
       if (!raf) raf = requestAnimationFrame(loop);
-    }, { passive: true });
+    };
+    addEventListener('mousemove', e => move(e.clientX, e.clientY, false), { passive: true });
     document.addEventListener('mouseleave', () => g.classList.remove('on'));
+    // Táctil: la luz aparece bajo el dedo y se apaga suavemente al soltar.
+    const touch = (e, snap) => {
+      clearTimeout(off);
+      const t = e.touches[0]; if (t) move(t.clientX, t.clientY, snap);
+    };
+    addEventListener('touchstart', e => touch(e, true), { passive: true });
+    addEventListener('touchmove', e => touch(e, false), { passive: true });
+    addEventListener('touchend', () => { off = setTimeout(() => g.classList.remove('on'), 700); }, { passive: true });
+    addEventListener('touchcancel', () => g.classList.remove('on'), { passive: true });
   }
 
   // Aparición al hacer scroll (si falla algo, el contenido se ve igualmente).

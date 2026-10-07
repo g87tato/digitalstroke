@@ -102,7 +102,7 @@ h2{letter-spacing:-.035em}
 .lamp::after{content:"";position:absolute;left:-46px;bottom:-46px;width:92px;height:46px;border-radius:92px 92px 0 0;background:var(--lime);box-shadow:0 0 40px 6px rgba(198,255,61,.35)}
 .lamp::before{content:"";position:absolute;left:-230px;bottom:-460px;width:460px;height:420px;background:radial-gradient(ellipse at 50% 0,rgba(198,255,61,.20),rgba(198,255,61,0) 68%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%)}
 @keyframes sway{from{transform:rotate(-2.2deg)}to{transform:rotate(2.2deg)}}
-@media(max-width:1100px){.lamp{display:none}}
+
 
 /* Luz que sigue al cursor (solo punteros precisos) */
 #glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(circle,rgba(198,255,61,.11),rgba(198,255,61,0) 62%);pointer-events:none;z-index:0;opacity:0;transition:opacity .4s;will-change:transform}
@@ -114,3 +114,15 @@ h2{letter-spacing:-.035em}
 @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.lamp{animation:none}#glow{display:none}}
 .js .cols .win.rv{transform:translateY(28px) rotate(1.2deg)}
 .js .cols .win.rv.in{transform:rotate(1.2deg)}
+
+/* Móvil y tablet: la lámpara se queda, más pequeña, colgando sobre el texto */
+.hero>*:not(.lamp){position:relative;z-index:1}
+.lamp{z-index:0}
+@media(max-width:1100px){
+  .hero{padding-top:9.5rem}
+  .lamp{top:-3.2rem;right:9%;height:8.5rem}
+  .lamp::after{left:-30px;bottom:-30px;width:60px;height:30px;border-radius:60px 60px 0 0;box-shadow:0 0 26px 4px rgba(198,255,61,.35)}
+  .lamp::before{left:-150px;bottom:-330px;width:300px;height:300px}
+  #glow{width:380px;height:380px;margin:-190px 0 0 -190px}
+}
+@media(max-width:560px){.lamp{right:16%}}
