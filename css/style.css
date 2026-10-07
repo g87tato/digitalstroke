@@ -86,3 +86,7 @@ label.check a{color:var(--lime)}
 .price .card .note{color:#555;font-size:.8rem;margin:.8rem 0}
 .price .card ul{margin:.4rem 0 .6rem}
 .amount i{font-size:1.1rem!important;font-weight:500;font-style:normal;letter-spacing:0;margin-left:.2rem}
+.more{margin:-.4rem 0 1.4rem}
+.more a{color:var(--lime);text-decoration:none;font-weight:500;padding-bottom:.35rem;border-bottom:2px solid transparent;transition:border-color .15s}
+.more a:hover,.more a:focus-visible{border-bottom-color:var(--lime)}
+.lead a{text-decoration-skip-ink:auto;text-underline-offset:.3em}
