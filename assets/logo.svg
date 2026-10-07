@@ -6,7 +6,7 @@
     <path d="M66 36 C 62 62, 70 86, 60 112"/>
   </g>
   <rect x="104" y="100" width="24" height="24" fill="#FF4D2E"/>
-  <g font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="700" fill="currentColor">
+  <g font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="700" fill="#F4F1EA">
     <text x="150" y="88" font-size="64" letter-spacing="-2">trazo</text>
     <text x="150" y="124" font-size="26" font-weight="500" letter-spacing="6" fill="#C6FF3D">DIGITAL</text>
   </g>
