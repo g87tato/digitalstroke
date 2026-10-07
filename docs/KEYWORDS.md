@@ -40,3 +40,10 @@ hacer pagina web precio (0,87–3,12) · crear pagina web precio (1,35–3,92) �
 
 ## Limitaciones
 Rangos en lugar de cifras; solo se revisaron las ~40 primeras de 314 ideas. Falta explorar nichos por oficio (fontanero, abogado, psicólogo…) y ciudades.
+
+## Segunda ronda: nichos por oficio (2026-10-07)
+Semillas: "web para clínica / abogados / restaurante / peluquería / fontanero / psicólogo", "página web para dentista, electricista, fisioterapeuta, arquitecto, taller mecánico".
+- Resultado: casi todas **0–10 búsquedas/mes** y Google las descartó por demasiado específicas. Solo una salió con 100–1k (variante "web restaurante").
+- Conclusión: **no hay demanda medible de "página web para [oficio]"**. No merece la pena una landing por oficio para SEO (sí para confianza/conversión en tráfico directo).
+- Términos genéricos que sí tienen volumen: `landing page` (1k–10k, informativa, puja 1,30–5,25 €), `página web profesional` (100–1k), `crear página web profesional` (100–1k).
+- Ruido a evitar: "landingi", "leadpage" (marcas de software), "ropa barata online" (otro sector).
