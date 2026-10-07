@@ -71,3 +71,13 @@ tr.us td{background:var(--lime);color:var(--ink)}
 .note{color:var(--mut);font-size:.8rem;margin-top:.6rem}
 .cta-box{border:2px solid var(--lime);padding:2rem;margin:3rem 0;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
 .cta-box h2,.cta-box p{width:100%;margin:0}
+.legal h2{font-size:1.4rem;margin:2rem 0 .6rem}
+.legal p,.legal li{color:#d8d5ce}
+.legal a{color:var(--lime)}
+#cookie-banner{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:50;background:var(--paper);color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--red);padding:1rem 1.2rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between;max-width:760px;margin:auto;font-size:.9rem}
+#cookie-banner p{margin:0;flex:1 1 280px}
+#cookie-banner a{color:var(--ink)}
+#cookie-banner .btn-ghost{color:var(--ink)!important;border-color:var(--ink)}
+label.check{display:flex;gap:.6rem;align-items:flex-start;font-size:.8rem}
+label.check input{width:auto;margin-top:.2rem}
+label.check a{color:var(--lime)}
