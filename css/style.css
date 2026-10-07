@@ -91,3 +91,26 @@ label.check a{color:var(--lime)}
 .more a:hover,.more a:focus-visible{border-bottom-color:var(--lime)}
 .lead a{text-decoration-skip-ink:auto;text-underline-offset:.3em}
 .hero h1{font-size:clamp(2.3rem,6.6vw,6.2rem)}
+
+/* ===== Capa visual: luz, aire y aparición suave ===== */
+section{padding:9rem 5vw}
+.hero{position:relative;padding-top:6rem}
+h2{letter-spacing:-.035em}
+
+/* Lámpara colgante: el hilo cae desde arriba y la luz cae sobre el titular */
+.lamp{position:absolute;top:-6rem;right:5%;width:1px;height:17rem;background:linear-gradient(#8d8a83,#8d8a83);transform-origin:top center;animation:sway 7s ease-in-out infinite alternate;pointer-events:none}
+.lamp::after{content:"";position:absolute;left:-46px;bottom:-46px;width:92px;height:46px;border-radius:92px 92px 0 0;background:var(--lime);box-shadow:0 0 40px 6px rgba(198,255,61,.35)}
+.lamp::before{content:"";position:absolute;left:-230px;bottom:-460px;width:460px;height:420px;background:radial-gradient(ellipse at 50% 0,rgba(198,255,61,.20),rgba(198,255,61,0) 68%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%)}
+@keyframes sway{from{transform:rotate(-2.2deg)}to{transform:rotate(2.2deg)}}
+@media(max-width:1100px){.lamp{display:none}}
+
+/* Luz que sigue al cursor (solo punteros precisos) */
+#glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(circle,rgba(198,255,61,.11),rgba(198,255,61,0) 62%);pointer-events:none;z-index:0;opacity:0;transition:opacity .4s;will-change:transform}
+#glow.on{opacity:1}
+
+/* Aparición al hacer scroll: solo si hay JS y el usuario no pide menos movimiento */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.lamp{animation:none}#glow{display:none}}
+.js .cols .win.rv{transform:translateY(28px) rotate(1.2deg)}
+.js .cols .win.rv.in{transform:rotate(1.2deg)}

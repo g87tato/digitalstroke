@@ -89,3 +89,45 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   const reset = document.getElementById('cookie-reset');
   if (reset) reset.addEventListener('click', () => { clear(); banner(); });
 })();
+
+// Capa visual: luz que sigue al cursor y aparición suave al hacer scroll.
+(() => {
+  const root = document.documentElement;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Luz de cursor: solo con ratón (no táctil) y sin "menos movimiento".
+  if (!calm && matchMedia('(pointer: fine)').matches) {
+    const g = document.createElement('div');
+    g.id = 'glow'; g.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(g);
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    const loop = () => {
+      cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+      g.style.transform = `translate(${cx}px,${cy}px)`;
+      raf = (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.5) ? requestAnimationFrame(loop) : 0;
+    };
+    addEventListener('mousemove', e => {
+      tx = e.clientX; ty = e.clientY; g.classList.add('on');
+      if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => g.classList.remove('on'));
+  }
+
+  // Aparición al hacer scroll (si falla algo, el contenido se ve igualmente).
+  if (calm || !('IntersectionObserver' in window)) return;
+  const targets = document.querySelectorAll(
+    '.problem h2, .cols article, .process h2, .process li, .price .card, .faq h2, .faq details, .contact h2, .contact form, .article h2, .article .cta-box');
+  if (!targets.length) return;
+  root.classList.add('js');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in'); io.unobserve(en.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  targets.forEach((el, i) => {
+    el.classList.add('rv');
+    el.style.transitionDelay = ((i % 4) * 90) + 'ms';
+    io.observe(el);
+  });
+})();
