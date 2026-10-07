@@ -128,7 +128,7 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   // Aparición al hacer scroll (si falla algo, el contenido se ve igualmente).
   if (calm || !('IntersectionObserver' in window)) return;
   const targets = document.querySelectorAll(
-    '.problem h2, .cols article, .process h2, .process li, .price .card, .faq h2, .faq details, .contact h2, .contact form, .article h2, .article .cta-box');
+    '.problem h2, .cols article, .process h2, .process li, .price .card, .faq h2, .faq details, .contact h2, .contact form, .article h2, .article .cta-box, .ex-head, .ex');
   if (!targets.length) return;
   root.classList.add('js');
   const io = new IntersectionObserver(entries => {
@@ -245,4 +245,14 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
   if ('ResizeObserver' in window) new ResizeObserver(rebuild).observe(document.body);
   build();
+})();
+
+// Conceptos de diseño: la web de cada ventana se desplaza sola cuando está a la vista (y al pasar el ratón).
+(() => {
+  const cards = document.querySelectorAll('.ex');
+  if (!cards.length || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(es => es.forEach(e =>
+    e.target.classList.toggle('peek', e.isIntersecting && e.intersectionRatio >= 0.6)), { threshold: [0, 0.6, 1] });
+  cards.forEach(c => io.observe(c));
 })();
