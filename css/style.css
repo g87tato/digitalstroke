@@ -125,4 +125,10 @@ h2{letter-spacing:-.035em}
   .lamp::before{left:-150px;bottom:-330px;width:300px;height:300px}
   #glow{width:380px;height:380px;margin:-190px 0 0 -190px}
 }
-@media(max-width:560px){.lamp{right:16%}}
+@media(max-width:560px){
+  .hero{padding-top:10.5rem}
+  .lamp{left:50%;right:auto;top:-3rem;height:8rem}
+  .lamp::before{left:-150px;bottom:-135px;width:300px;height:125px;background:radial-gradient(ellipse at 50% 0,rgba(198,255,61,.13),rgba(198,255,61,0) 72%)}
+}
+.nav .btn-sm{white-space:nowrap}
+@media(max-width:360px){.nav .btn-sm{padding:.45rem .7rem;font-size:.8rem}}
