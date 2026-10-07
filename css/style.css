@@ -144,3 +144,27 @@ h2{letter-spacing:-.035em}
 .threaded .lamp::after{display:none}
 @media(max-width:560px){.t-line{stroke-width:3}.t-out{stroke-width:7}}
 @media(prefers-reduced-motion:reduce){.t-tip{display:none}}
+
+/* ===== Fase 2: línea de tiempo de 5 días (el eje es el propio hilo) ===== */
+.process ol.days{display:block;background:none;gap:0;margin:2.5rem 0 0;padding:0;list-style:none}
+.days li{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:1.5rem;padding:2rem 0 2rem;border-top:1px solid #262626;background:none}
+.days li:last-child{border-bottom:1px solid #262626}
+.days .day{color:var(--lime);font-weight:700;font-size:1.15rem;line-height:1.5;padding-top:.15rem}
+.days h3{font-size:clamp(1.7rem,3.4vw,2.6rem);margin:0 0 .5rem;letter-spacing:-.03em;line-height:1}
+.days p{color:var(--mut);max-width:34rem;margin:0}
+.days .last .day,.days .last h3{color:var(--red)}
+/* nodo sobre el hilo: apagado hasta que el trazo llega */
+.days li::before{content:"";position:absolute;top:2.3rem;left:calc(var(--lane,36px) * -1 - 8px);width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid #555;box-sizing:border-box;transition:background .4s,border-color .4s,box-shadow .4s,transform .4s;z-index:1}
+.days li.last::before{border-radius:2px;width:20px;height:20px;left:calc(var(--lane,36px) * -1 - 10px);top:2.2rem}
+.days li.lit::before{background:var(--lime);border-color:var(--bg);box-shadow:0 0 0 3px var(--lime),0 0 22px 4px rgba(198,255,61,.5);transform:scale(1.05)}
+.days li.last.lit::before{background:var(--red);box-shadow:0 0 0 3px var(--red),0 0 26px 6px rgba(255,77,46,.55)}
+.days li.lit .day{text-shadow:0 0 18px rgba(198,255,61,.45)}
+.days li.last.lit .day{text-shadow:0 0 18px rgba(255,77,46,.5)}
+@media(max-width:760px){
+  .days li{grid-template-columns:1fr;gap:.3rem;padding:1.5rem 0 1.6rem}
+  .days li::before{top:1.65rem;width:14px;height:14px;left:calc(var(--lane,12px) * -1 - 7px)}
+  .days li.last::before{width:18px;height:18px;left:calc(var(--lane,12px) * -1 - 9px);top:1.55rem}
+  .days h3{font-size:1.65rem}
+}
+@media(prefers-reduced-motion:reduce){.days li::before{transition:none}}
+label.check a{text-decoration-thickness:1px;text-underline-offset:.2em}

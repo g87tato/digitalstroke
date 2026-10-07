@@ -161,6 +161,8 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   document.documentElement.classList.add('threaded');
 
   let cum = [], lens = [], total = 0, minDrawn = 0, raf = 0;
+  const steps = [...document.querySelectorAll('.days li')].map(el => ({ el, y: 0 }));
+  const docY = el => { let y = 0; for (let e = el; e; e = e.offsetParent) y += e.offsetTop; return y; };
 
   function update() {
     raf = 0;
@@ -176,8 +178,10 @@ document.querySelectorAll('[data-wa]').forEach(a =>
     drawn = Math.min(drawn, total);
     const dash = drawn + ' ' + total;
     line.style.strokeDasharray = dash; outline.style.strokeDasharray = dash;
-    if (calm || drawn >= total) { tip.style.display = 'none'; return; }
-    const p = line.getPointAtLength(drawn);
+    const done = calm || drawn >= total;
+    const p = done ? null : line.getPointAtLength(drawn);
+    steps.forEach(st => st.el.classList.toggle('lit', done || p.y >= st.y));
+    if (done) { tip.style.display = 'none'; return; }
     tip.style.display = ''; tip.setAttribute('cx', p.x); tip.setAttribute('cy', p.y);
   }
 
@@ -191,6 +195,8 @@ document.querySelectorAll('[data-wa]').forEach(a =>
     const L = at(lamp), lx = Math.round(L.l + L.w / 2), ly = Math.round(L.b);
     const dw = W <= 1100 ? 60 : 92, dh = dw / 2;
     const lane = Math.max(8, Math.round(at(h1).l - (W <= 560 ? 12 : 36)));
+    document.documentElement.style.setProperty('--lane', Math.round(at(h1).l - lane) + 'px');
+    steps.forEach(st => { st.y = docY(st.el) + parseFloat(getComputedStyle(st.el, '::before').top) + 8; });
     const heroB = Math.round(at(document.querySelector('.hero')).b);
     const btn = document.querySelector('#lead button');
     const B = btn ? at(btn) : null;
