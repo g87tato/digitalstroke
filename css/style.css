@@ -143,7 +143,6 @@ h2{letter-spacing:-.035em}
 .threaded .lamp{background:none;animation:none}
 .threaded .lamp::after{display:none}
 @media(max-width:560px){.t-line{stroke-width:3}.t-out{stroke-width:7}}
-@media(prefers-reduced-motion:reduce){.t-tip{display:none}}
 
 /* ===== Fase 2: línea de tiempo de 5 días (el eje es el propio hilo) ===== */
 .process ol.days{display:block;background:none;gap:0;margin:2.5rem 0 0;padding:0;list-style:none}

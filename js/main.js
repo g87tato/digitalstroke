@@ -149,7 +149,8 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   const lamp = document.querySelector('.lamp');
   const h1 = document.querySelector('.hero h1');
   if (!lamp || !h1) return; // solo en la portada
-  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // El hilo se dibuja con el scroll incluso con "reducir movimiento": es una línea fina que crece, sin saltos ni parallax.
+  const calm = false;
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
   svg.id = 'thread'; svg.setAttribute('aria-hidden', 'true');
