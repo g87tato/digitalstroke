@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="trazodigital">
-  <title>trazodigital</title>
-  <!-- marca: un trazo a mano que dibuja una T y termina en un píxel -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="DigitalStroke">
+  <title>DigitalStroke</title>
+  <!-- marca: un trazo (stroke) a mano que dibuja una D y termina en un píxel -->
   <g fill="none" stroke="#C6FF3D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M14 38 C 34 26, 52 50, 74 36 S 108 30, 118 34"/>
-    <path d="M66 36 C 62 62, 70 86, 60 112"/>
+    <path d="M38 24 C 34 50, 42 88, 36 116"/>
+    <path d="M40 26 C 92 16, 124 50, 112 82 S 62 120, 40 112"/>
   </g>
   <rect x="104" y="100" width="24" height="24" fill="#FF4D2E"/>
   <g font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="700" fill="#F4F1EA">
-    <text x="150" y="88" font-size="64" letter-spacing="-2">trazo</text>
-    <text x="150" y="124" font-size="26" font-weight="500" letter-spacing="6" fill="#C6FF3D">DIGITAL</text>
+    <text x="150" y="82" font-size="58" letter-spacing="-2">digital</text>
+    <text x="150" y="124" font-size="34" font-weight="700" letter-spacing="8" fill="#C6FF3D">STROKE</text>
   </g>
 </svg>

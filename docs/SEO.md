@@ -6,7 +6,7 @@ Base: datos de `KEYWORDS.md`. Realismo: con dominio nuevo, SEO orgánico tarda *
 No compites por "diseño web" (imposible). Ganas respondiendo **preguntas de precio** con un precio cerrado y siendo local/nicho en cuentas de Google.
 
 ## Fase 0 · Esta semana (técnico, una sola vez)
-1. Comprar `trazodigital.es` y publicar la web (Cloudflare Pages o Netlify: gratis, HTTPS, rápido).
+1. Comprar `digitalstroke.es` y publicar la web (Cloudflare Pages o Netlify: gratis, HTTPS, rápido).
 2. Alta en **Google Search Console** y enviar `sitemap.xml` (ya existe).
 3. Alta en **Google Analytics 4** (o Plausible) para medir formulario y clic en WhatsApp.
 4. Alta del **Perfil de Empresa de Google** (gratis): categoría "Diseñador de sitios web", área de servicio España, teléfono, web y 5 fotos. Pide reseñas a cada cliente.
@@ -31,7 +31,7 @@ Reglas de cada página (60 % del éxito):
 
 ## Fase 2 · Mes 2–3 (autoridad)
 - Enlaces gratis: directorios españoles de profesionales, tu perfil de GitHub, LinkedIn, Behance/Dribbble, Product Hunt España, comunidades de autónomos.
-- Casos de éxito: 2–3 webs hechas (aunque sean con descuento a cambio de testimonio y enlace a trazodigital.es desde el pie de página del cliente: **cada web que entregues es un enlace**).
+- Casos de éxito: 2–3 webs hechas (aunque sean con descuento a cambio de testimonio y enlace a digitalstroke.es desde el pie de página del cliente: **cada web que entregues es un enlace**).
 - Contenido de apoyo: "documentos que necesita un autónomo para su web", "cuánto cuesta mantener una web".
 
 ## Canales sin SEO para tener clientes ya

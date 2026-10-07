@@ -1,4 +1,4 @@
-# trazodigital.es — Plan de arranque
+# digitalstroke.es — Plan de arranque
 
 ## Oferta
 Web o landing para autónomos y pymes · 900 € + IVA · 3–5 días.
@@ -34,4 +34,4 @@ No competir por "diseño web" (dificultad altísima). Atacar intención concreta
 | Cumplimiento legal (RGPD, cookies, aviso legal) | Plantilla | Revisión por cliente |
 
 ## Pendiente de ti
-- Comprar trazodigital.es · número real de WhatsApp · endpoint del formulario · textos legales.
+- Comprar digitalstroke.es · número real de WhatsApp · endpoint del formulario · textos legales.

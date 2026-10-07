@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://trazodigital.es/sitemap.xml
+Sitemap: https://digitalstroke.es/sitemap.xml

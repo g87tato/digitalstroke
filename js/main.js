@@ -1,4 +1,4 @@
-// Trazo de tinta que sigue al ratón/dedo
+// Trazo (stroke) de tinta que sigue al ratón/dedo
 (() => {
   const c = document.getElementById('ink'), x = c.getContext('2d');
   const fit = () => { c.width = innerWidth; c.height = innerHeight; };
