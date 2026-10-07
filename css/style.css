@@ -85,3 +85,4 @@ label.check a{color:var(--lime)}
 .price ul.no li::marker{content:"✕  ";color:var(--red)}
 .price .card .note{color:#555;font-size:.8rem;margin:.8rem 0}
 .price .card ul{margin:.4rem 0 .6rem}
+.amount i{font-size:1.1rem!important;font-weight:500;font-style:normal;letter-spacing:0;margin-left:.2rem}
