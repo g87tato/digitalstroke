@@ -263,3 +263,35 @@ section{padding:3.5rem 5vw}
   .price{padding-top:4rem;padding-bottom:4rem}
   .contact{padding-bottom:3rem}
 }
+
+/* ===== Formulario con brief ===== */
+.c-lead{color:#c9c6bf;max-width:40rem;margin:-.6rem 0 2.2rem}
+form#lead{max-width:860px;gap:1.6rem}
+form#lead fieldset{border:0;padding:0;margin:0;min-width:0}
+form#lead legend{padding:0;margin:0 0 .9rem;font-weight:700;font-size:1.05rem;color:var(--fg)}
+.f-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem 1.6rem;margin-bottom:1.3rem}
+form#lead label{display:grid;gap:.4rem;font-size:.9rem;color:var(--mut)}
+form#lead input::placeholder,form#lead textarea::placeholder{color:#5f5d57}
+form#lead textarea{resize:vertical;min-height:3.2rem}
+.brief{border:1px solid #2c2c2c;background:#0f0f10}
+.brief>summary{list-style:none;cursor:pointer;display:grid;gap:.2rem;padding:1.2rem 1.4rem;position:relative}
+.brief>summary::-webkit-details-marker{display:none}
+.brief>summary span{font-weight:700;font-size:1.15rem;color:var(--fg)}
+.brief>summary small{color:var(--mut);font-size:.88rem;padding-right:2.5rem}
+.brief>summary::after{content:"+";position:absolute;right:1.4rem;top:1.1rem;font-size:1.6rem;line-height:1;color:var(--lime);transition:transform .25s}
+.brief[open]>summary::after{transform:rotate(45deg)}
+.brief[open]>summary{border-bottom:1px solid #2c2c2c}
+.brief-body{padding:1.6rem 1.4rem 1.4rem;display:grid;gap:1.4rem}
+.brief-body>label,.brief-body .f-grid{margin:0}
+form#lead .opts{display:flex;flex-wrap:wrap;gap:.55rem}
+form#lead .opts legend{width:100%}
+form#lead label.pill{display:inline-flex;gap:0;color:var(--fg);font-size:.88rem}
+label.pill input{position:absolute;opacity:0;width:0;height:0}
+label.pill span{border:1px solid #444;padding:.5rem .95rem;border-radius:99px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+label.pill:hover span{border-color:var(--lime)}
+label.pill input:checked+span{background:var(--lime);color:var(--ink);border-color:var(--lime);font-weight:700}
+label.pill input:focus-visible+span{outline:2px solid var(--lime);outline-offset:3px}
+.f-note{margin:-.6rem 0 0;font-size:.82rem;color:var(--mut)}
+.hint.ok{color:var(--lime)}
+.hint.err{color:#ff8a73}
+@media(max-width:700px){.f-grid{grid-template-columns:1fr}.brief>summary small{padding-right:2rem}}

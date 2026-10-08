@@ -29,17 +29,24 @@ const GA_ID = 'G-XXXXXXXXXX';
 const yearEl = document.getElementById('y');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Formulario por fetch (Formspree/Web3Forms)
+// Formulario: se envía por correo con FormSubmit (sin cuenta ni backend propio).
 const f = document.getElementById('lead'), s = document.getElementById('status');
 if (f) {
+  const btn = f.querySelector('button[type="submit"]');
   f.addEventListener('submit', async e => {
-    e.preventDefault(); s.textContent = 'Enviando…';
+    e.preventDefault();
+    if (!f.reportValidity()) return;
+    s.className = 'hint'; s.textContent = 'Enviando…'; btn.disabled = true;
     try {
       const r = await fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } });
-      if (!r.ok) throw new Error('form');
-      f.reset(); s.textContent = '¡Recibido! Te respondemos hoy.';
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || String(d.success) === 'false') throw new Error('form');
+      f.reset(); s.className = 'hint ok'; s.textContent = '¡Recibido! Te respondemos hoy.';
       if (window.gtag) gtag('event', 'generate_lead');
-    } catch { s.textContent = 'Algo falló. Escríbenos por WhatsApp.'; }
+    } catch {
+      s.className = 'hint err';
+      s.textContent = 'No se ha podido enviar. Escríbenos por WhatsApp al +34 676 724 331 y lo vemos enseguida.';
+    } finally { btn.disabled = false; }
   });
 }
 document.querySelectorAll('[data-wa]').forEach(a =>
@@ -128,7 +135,7 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   // Aparición al hacer scroll (si falla algo, el contenido se ve igualmente).
   if (calm || !('IntersectionObserver' in window)) return;
   const targets = document.querySelectorAll(
-    '.problem h2, .cols article, .process h2, .process li, .price .card, .faq h2, .faq details, .contact h2, .contact form, .article h2, .article .cta-box, .ex-head, .ex');
+    '.problem h2, .cols article, .process h2, .process li, .price .card, .faq h2, .faq details, .contact h2, .contact form, .article h2, .article .cta-box, .ex-head, .showcase');
   if (!targets.length) return;
   root.classList.add('js');
   const io = new IntersectionObserver(entries => {
@@ -256,4 +263,54 @@ document.querySelectorAll('[data-wa]').forEach(a =>
   const io = new IntersectionObserver(es => es.forEach(e =>
     e.target.classList.toggle('peek', e.isIntersecting && e.intersectionRatio >= 0.6)), { threshold: [0, 0.6, 1] });
   cards.forEach(c => io.observe(c));
+})();
+
+
+// Escaparate de conceptos: pestañas, escala automática y avance suave.
+(() => {
+  const sc = document.querySelector('.showcase');
+  if (!sc) return;
+  const tabs = [...sc.querySelectorAll('[role="tab"]')];
+  const sites = [...sc.querySelectorAll('.vsite')], phones = [...sc.querySelectorAll('.vphone')];
+  const view = sc.querySelector('.sc-view'), pview = sc.querySelector('.sc-pview');
+  const url = sc.querySelector('.sc-url'), cap = document.getElementById('sc-cap');
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let cur = 0, timer = 0, touched = false;
+
+  function fit() {
+    const s = view.clientWidth / 1200, ps = pview.clientWidth / 390;
+    view.style.height = Math.round(view.clientWidth * 0.62) + 'px';
+    pview.style.height = Math.round(pview.clientWidth * 2.1) + 'px';
+    sites.forEach(v => { const i = v.firstElementChild; v.style.setProperty('--s', s); i.style.setProperty('--travel', Math.max(0, i.offsetHeight - 744) + 'px'); });
+    phones.forEach(v => { const i = v.firstElementChild; v.style.setProperty('--ps', ps); i.style.setProperty('--ptravel', Math.max(0, i.offsetHeight - pview.clientHeight / ps) + 'px'); });
+  }
+  function set(i, user) {
+    cur = i; if (user) touched = true;
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+    [sites, phones].forEach(list => list.forEach((e, k) => {
+      const on = k === i; e.classList.toggle('on', on);
+      if (on) { const inner = e.firstElementChild; inner.style.animation = 'none'; void inner.offsetWidth; inner.style.animation = ''; }
+    }));
+    url.textContent = tabs[i].dataset.url; cap.textContent = tabs[i].dataset.cap;
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => set(i, true));
+    t.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowRight' && e.key !== 'ArrowUp' && e.key !== 'ArrowLeft') return;
+      const n = (i + (e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+      set(n, true); tabs[n].focus(); e.preventDefault();
+    });
+  });
+  fit();
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(view);
+  addEventListener('load', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+  // Avance automático entre conceptos mientras se ven (y nadie haya tocado las pestañas).
+  if (!calm && 'IntersectionObserver' in window) {
+    new IntersectionObserver(es => {
+      clearInterval(timer);
+      if (es[0].isIntersecting && !touched) timer = setInterval(() => { if (touched) return clearInterval(timer); set((cur + 1) % tabs.length, false); }, 11000);
+    }, { threshold: 0.5 }).observe(sc);
+  }
 })();
