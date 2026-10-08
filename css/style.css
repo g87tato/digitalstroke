@@ -295,3 +295,19 @@ label.pill input:focus-visible+span{outline:2px solid var(--lime);outline-offset
 .hint.ok{color:var(--lime)}
 .hint.err{color:#ff8a73}
 @media(max-width:700px){.f-grid{grid-template-columns:1fr}.brief>summary small{padding-right:2rem}}
+
+/* ===== Guías SEO ===== */
+.crumbs{font-size:.85rem;color:var(--mut);margin:0 0 1rem}
+.crumbs a{color:var(--mut)}
+.article .lead{max-width:none}
+.article p a,.article li a{color:var(--lime);text-underline-offset:.2em}
+.related{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.6rem}
+.related li{margin:0}
+.related a{display:block;padding:1rem 1.2rem;border:1px solid #2c2c2c;color:var(--fg)!important;text-decoration:none;font-weight:500;transition:border-color .2s,transform .2s}
+.related a::after{content:" →";color:var(--lime)}
+.related a:hover{border-color:var(--lime);transform:translateX(4px)}
+.guides-strip{max-width:1300px;margin:0 auto;padding:2.5rem 5vw 0;position:relative;z-index:1}
+.guides-strip h2{font-size:1rem;margin:0 0 1rem;color:var(--mut);font-weight:500;letter-spacing:.02em}
+.guides-strip ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.guides-strip a{display:inline-block;border:1px solid #333;padding:.5rem .95rem;border-radius:99px;color:var(--fg);text-decoration:none;font-size:.9rem;transition:border-color .2s,background .2s}
+.guides-strip a:hover{border-color:var(--lime);background:#16160f}
