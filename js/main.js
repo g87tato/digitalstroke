@@ -1,5 +1,5 @@
 // ID de Google Analytics 4 (formato G-XXXXXXXXXX). Mientras sea el de ejemplo, no se carga nada.
-const GA_ID = 'G-XXXXXXXXXX';
+const GA_ID = 'G-GENY4DY73Q';
 
 // Trazo (stroke) de tinta que sigue al ratón/dedo
 (() => {
