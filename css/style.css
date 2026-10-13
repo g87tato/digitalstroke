@@ -271,6 +271,8 @@ form#lead fieldset{border:0;padding:0;margin:0;min-width:0}
 form#lead legend{padding:0;margin:0 0 .9rem;font-weight:700;font-size:1.05rem;color:var(--fg)}
 .f-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem 1.6rem;margin-bottom:1.3rem}
 form#lead label{display:grid;gap:.4rem;font-size:.9rem;color:var(--mut)}
+form#lead label.check{display:flex;flex-wrap:wrap;gap:.3rem .5rem;align-items:center;font-size:.8rem}
+form#lead label.check input{width:auto;margin:0}
 form#lead input::placeholder,form#lead textarea::placeholder{color:#5f5d57}
 form#lead textarea{resize:vertical;min-height:3.2rem}
 .brief{border:1px solid #2c2c2c;background:#0f0f10}
