@@ -1,6 +1,8 @@
 # Buscadores y asistentes de IA: todos pueden leer e indexar la web.
 User-agent: *
 Allow: /
+# Señales de contenido (contentsignals.org): sí a buscadores, a respuestas de IA y a entrenamiento
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 # Rastreadores de IA (permiso explícito)
 User-agent: GPTBot
