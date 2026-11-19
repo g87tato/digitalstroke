@@ -317,3 +317,13 @@ label.pill input:focus-visible+span{outline:2px solid var(--lime);outline-offset
 .about h2{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:1rem}
 .about p{color:var(--mut);font-size:1rem;line-height:1.65;max-width:760px}
 .about a{color:var(--fg);text-underline-offset:.2em}
+
+/* Barra fija de contacto en móvil */
+.mbar{display:none}
+@media(max-width:640px){
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-top:1px solid #333}
+.mbar a{padding:.85rem .5rem;text-align:center;font-weight:700;font-size:.95rem;text-decoration:none;color:var(--fg)}
+.mbar a.w{background:var(--lime);color:var(--ink)}
+body{padding-bottom:3.3rem}
+#cookie-banner{bottom:4.3rem}
+}

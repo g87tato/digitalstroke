@@ -102,7 +102,7 @@
 @keyframes vpscroll{0%,8%{transform:translateY(0)}92%,100%{transform:translateY(calc(var(--ptravel,500px) * -1))}}
 .vp-nav{display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:78px;border-bottom:1px solid var(--line);font-size:22px}
 .vp-hero{padding:34px 24px 26px}
-.vp-hero h1{font-size:46px;line-height:1;letter-spacing:-.035em;margin:0 0 16px;font-weight:700}
+.vp-hero .vp-h{font-size:46px;line-height:1;letter-spacing:-.035em;margin:0 0 16px;font-weight:700}
 .vp-hero p{font-size:19px;line-height:1.45;color:var(--mut);margin:0 0 24px}
 .vp-art{padding:0 24px 24px}
 .vp-art svg{width:100%;height:auto;display:block}

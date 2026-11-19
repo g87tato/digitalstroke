@@ -41,7 +41,7 @@ if (f) {
       const r = await fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } });
       const d = await r.json().catch(() => ({}));
       if (!r.ok || String(d.success) === 'false') throw new Error('form');
-      f.reset(); s.className = 'hint ok'; s.textContent = '¡Recibido! Te respondemos hoy.';
+      f.reset(); s.className = 'hint ok'; s.textContent = f.dataset.ok || '¡Recibido! Te respondemos hoy.';
       if (window.gtag) gtag('event', 'generate_lead');
     } catch {
       s.className = 'hint err';
@@ -49,6 +49,15 @@ if (f) {
     } finally { btn.disabled = false; }
   });
 }
+// Barra fija en móvil: llamar y WhatsApp siempre a mano.
+(() => {
+  const m = document.createElement('div');
+  m.className = 'mbar';
+  m.innerHTML = '<a href="tel:+34676724331" data-tel>Llamar</a>' +
+    '<a class="w" href="https://wa.me/34676724331?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20web" data-wa>WhatsApp</a>';
+  document.body.appendChild(m);
+  m.querySelector('[data-tel]').addEventListener('click', () => window.gtag && gtag('event', 'phone_click'));
+})();
 document.querySelectorAll('[data-wa]').forEach(a =>
   a.addEventListener('click', () => window.gtag && gtag('event', 'whatsapp_click')));
 
@@ -75,9 +84,8 @@ document.querySelectorAll('[data-wa]').forEach(a =>
     if (document.getElementById('cookie-banner')) return;
     const b = document.createElement('div');
     b.id = 'cookie-banner'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', 'Cookies');
-    const base = /\/(aviso-legal|politica-privacidad|politica-cookies|cuanto-cuesta-una-pagina-web)\//.test(location.pathname) ? '../' : '';
     b.innerHTML = '<p>Usamos cookies analíticas (Google Analytics) para medir visitas, solo si las aceptas. ' +
-      '<a href="' + base + 'politica-cookies/">Más información</a>.</p>' +
+      '<a href="/politica-cookies/">Ver la política de cookies</a>.</p>' +
       '<div><button type="button" class="btn btn-ghost btn-sm" data-c="no">Rechazar</button> ' +
       '<button type="button" class="btn btn-sm" data-c="yes">Aceptar</button></div>';
     b.addEventListener('click', e => {
