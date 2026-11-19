@@ -327,3 +327,14 @@ label.pill input:focus-visible+span{outline:2px solid var(--lime);outline-offset
 body{padding-bottom:3.3rem}
 #cookie-banner{bottom:4.3rem}
 }
+
+/* Proyectos reales */
+.real-note{color:#c9c6bf;max-width:44rem;margin:-.8rem 0 2.2rem}
+.real-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem}
+.real-card{display:block;border:2px solid #2a2a2a;background:#101011;text-decoration:none;color:var(--fg);transition:border-color .2s,transform .2s}
+.real-card:hover{border-color:var(--lime);transform:translate(-4px,-4px)}
+.real-card img{display:block;width:100%;height:auto;border-bottom:2px solid #2a2a2a}
+.real-card h3{font-size:1.3rem;margin:1.1rem 1.2rem .5rem}
+.real-card p{margin:0 1.2rem;color:#c9c6bf;font-size:.95rem}
+.real-card span{display:block;margin:.9rem 1.2rem 1.2rem;color:var(--lime);font-weight:700;font-size:.95rem}
+@media(max-width:760px){.real-grid{grid-template-columns:1fr}}
