@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de presupuesto de página web | DigitalStroke</title>
+<meta name="description" content="Calcula en 30 segundos cuánto cuesta tu página web: elige el tipo de web, quién la hace y los extras, y obtén un presupuesto orientativo de diseño web y su coste anual.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://digitalstroke.es/calculadora-presupuesto-pagina-web/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Calculadora de presupuesto de página web">
+<meta property="og:description" content="Elige el tipo de web, quién la hace y los extras, y obtén un presupuesto orientativo en 30 segundos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://digitalstroke.es/calculadora-presupuesto-pagina-web/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="DigitalStroke">
+<meta property="og:image" content="https://digitalstroke.es/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css?v=17">
+<style>
+.calc{border:2px solid #333;padding:1.6rem;margin:2rem 0}
+.calc fieldset{border:0;padding:0;margin:0 0 1.6rem;display:flex;flex-wrap:wrap;gap:.55rem;min-width:0}
+.calc legend{width:100%;padding:0;margin:0 0 .8rem;font-weight:700;color:var(--fg)}
+.calc label.pill{display:inline-flex;color:var(--fg);font-size:.9rem}
+.calc-out{border:2px solid var(--lime);padding:1.4rem;margin-top:.4rem}
+.calc-out .k{color:var(--mut);font-size:.9rem;margin:0}
+.calc-out .v{font-size:clamp(1.8rem,6vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:.2rem 0 .8rem;color:var(--lime)}
+.calc-out p{margin:.5rem 0}
+.calc-out .ds{border-top:1px solid #333;padding-top:.9rem;margin-top:.9rem}
+</style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de presupuesto de página web", "url": "https://digitalstroke.es/calculadora-presupuesto-pagina-web/", "applicationCategory": "BusinessApplication", "operatingSystem": "Cualquiera (navegador web)", "inLanguage": "es-ES", "description": "Calculadora gratuita que estima el precio orientativo de una página web en España según el tipo de web, quién la hace y los extras.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@id": "https://digitalstroke.es/#empresa"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Es un presupuesto real?", "acceptedAnswer": {"@type": "Answer", "text": "No. Es una estimación orientativa hecha con rangos habituales del mercado español. Un presupuesto real depende del alcance concreto y debe dártelo por escrito quien vaya a hacer la web."}}, {"@type": "Question", "name": "¿Los precios incluyen IVA?", "acceptedAnswer": {"@type": "Answer", "text": "No. Los rangos son sin IVA, que es como suelen darse los presupuestos. Para una web hecha en España hay que sumar el 21 %."}}, {"@type": "Question", "name": "¿De dónde salen las cifras?", "acceptedAnswer": {"@type": "Answer", "text": "Son estimaciones de DigitalStroke. La tabla completa con todas las cifras que usa la calculadora está publicada en esta misma página."}}, {"@type": "Question", "name": "¿Guardáis lo que marco en la calculadora?", "acceptedAnswer": {"@type": "Answer", "text": "No. El cálculo se hace en tu navegador y no se envía a ningún sitio."}}]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://digitalstroke.es/"}, {"@type": "ListItem", "position": 2, "name": "Calculadora de presupuesto", "item": "https://digitalstroke.es/calculadora-presupuesto-pagina-web/"}]}
+</script>
+</head>
+<body>
+<header class="nav">
+  <a href="../" class="logo" aria-label="DigitalStroke"><img src="../assets/logo.svg?v=3" alt="DigitalStroke" width="152" height="38"></a>
+  <nav><a href="../#proceso">Proceso</a><a href="../#precio">Precio</a><a href="../#contacto" class="btn btn-sm">Quiero mi web</a></nav>
+</header>
+
+<main class="article">
+  <article>
+    <p class="crumbs"><a href="../">Inicio</a> › Calculadora de presupuesto</p>
+    <p class="tag">Gratis · sin dejar tus datos</p>
+    <h1>Calculadora de <em>presupuesto</em> de página web</h1>
+    <p class="lead">Marca tres cosas y verás cuánto suele costar una web como la tuya en España: el precio de hacerla y lo que pagarás cada año. Es una estimación orientativa, sin IVA.</p>
+
+    <div class="calc" id="calc">
+      <fieldset>
+        <legend>1. ¿Qué tipo de web necesitas?</legend>
+        <label class="pill"><input type="radio" name="tipo" value="landing"><span>Landing (una página)</span></label>
+        <label class="pill"><input type="radio" name="tipo" value="servicios" checked><span>Web de servicios (hasta 5 secciones)</span></label>
+        <label class="pill"><input type="radio" name="tipo" value="grande"><span>Web grande (6 a 15 páginas)</span></label>
+        <label class="pill"><input type="radio" name="tipo" value="tienda"><span>Tienda online</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>2. ¿Quién la va a hacer?</legend>
+        <label class="pill"><input type="radio" name="quien" value="plantilla"><span>Yo, con una plantilla</span></label>
+        <label class="pill"><input type="radio" name="quien" value="freelance" checked><span>Un freelance</span></label>
+        <label class="pill"><input type="radio" name="quien" value="agencia"><span>Una agencia</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>3. ¿Qué extras necesitas?</legend>
+        <label class="pill"><input type="checkbox" name="extra" value="textos"><span>Que me escriban los textos</span></label>
+        <label class="pill"><input type="checkbox" name="extra" value="logo"><span>Logo</span></label>
+        <label class="pill"><input type="checkbox" name="extra" value="idioma"><span>Segundo idioma</span></label>
+        <label class="pill"><input type="checkbox" name="extra" value="blog"><span>Blog</span></label>
+        <label class="pill"><input type="checkbox" name="extra" value="reservas"><span>Reservas online</span></label>
+      </fieldset>
+      <div class="calc-out" id="out" role="status" aria-live="polite">
+        <p class="k">Precio orientativo de hacer la web (sin IVA)</p>
+        <p class="v" id="o-precio">500 – 1.500 €</p>
+        <p id="o-anual">Cada año: 10 – 140 € de dominio y hosting.</p>
+        <p id="o-nota"></p>
+        <p class="ds" id="o-ds"></p>
+      </div>
+      <noscript><p class="note">La calculadora necesita JavaScript. Tienes todas las cifras en la tabla de abajo.</p></noscript>
+    </div>
+    <p class="note">Estimación de DigitalStroke con rangos habituales del mercado español. No es un presupuesto ni una oferta de terceros. El cálculo se hace en tu navegador: no guardamos nada.</p>
+
+    <h2>Cómo se calcula</h2>
+    <p>La calculadora parte de un rango base según el tipo de web y quién la hace, y le suma los extras que marques. Estas son todas las cifras que usa:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tipo de web</th><th>Plantilla (tú)</th><th>Freelance</th><th>Agencia</th></tr></thead>
+      <tbody>
+        <tr><td>Landing (una página)</td><td>0–200 €/año</td><td>400–1.200 €</td><td>1.000–3.000 €</td></tr>
+        <tr><td>Web de servicios (hasta 5 secciones)</td><td>0–300 €/año</td><td>500–1.500 €</td><td>2.000–6.000 €</td></tr>
+        <tr><td>Web grande (6 a 15 páginas)</td><td>100–400 €/año</td><td>1.500–4.000 €</td><td>4.000–12.000 €</td></tr>
+        <tr><td>Tienda online</td><td>300–600 €/año</td><td>2.000–6.000 €</td><td>5.000–20.000 €</td></tr>
+      </tbody>
+    </table></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Extra</th><th>Freelance</th><th>Agencia</th></tr></thead>
+      <tbody>
+        <tr><td>Redacción de textos</td><td>+150–400 €</td><td>+300–800 €</td></tr>
+        <tr><td>Logo</td><td>+100–300 €</td><td>+300–1.000 €</td></tr>
+        <tr><td>Segundo idioma</td><td>+150–500 €</td><td>+400–1.200 €</td></tr>
+        <tr><td>Blog</td><td>+150–400 €</td><td>+400–1.000 €</td></tr>
+        <tr><td>Reservas online</td><td>+200–600 €</td><td>+500–1.500 €</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Con plantilla, los extras los haces tú o van en planes de pago de la plataforma, así que no se suman. A todo hay que añadir dominio (10–20 € al año) y hosting (0–120 € al año) si no van incluidos en una cuota.</p>
+
+    <h2>Por qué hay tanta diferencia entre opciones</h2>
+    <ul>
+      <li><strong>Plantilla:</strong> pagas poco dinero y mucho tiempo. Tú eliges el diseño, escribes los textos y aprendes la herramienta.</li>
+      <li><strong>Freelance:</strong> pagas el trabajo de una persona. El precio depende de su experiencia y de lo claro que esté el encargo.</li>
+      <li><strong>Agencia:</strong> pagas un equipo (diseño, programación, gestión del proyecto). Tiene sentido cuando la web es grande o hay varias personas decidiendo.</li>
+    </ul>
+    <p>La explicación completa, con el coste del primer año y cómo comparar presupuestos, está en <a href="../cuanto-cuesta-una-pagina-web/">¿cuánto cuesta una página web en 2026?</a></p>
+
+    <div class="cta-box">
+      <h2>¿Prefieres un precio <em>cerrado</em>?</h2>
+      <p>Web de servicios de hasta 5 secciones, con textos y logo sencillo incluidos: 900 € + IVA, en 3 a 5 días laborables.</p>
+      <a href="../#contacto" class="btn">Pedir mi web →</a>
+      <a href="https://wa.me/34676724331?text=Hola%2C%20he%20usado%20la%20calculadora%20y%20quiero%20un%20presupuesto" class="btn btn-ghost" data-wa>WhatsApp</a>
+    </div>
+
+    <h2>Preguntas frecuentes</h2>
+<details><summary>¿Es un presupuesto real?</summary><p>No. Es una estimación orientativa hecha con rangos habituales del mercado español. Un presupuesto real depende del alcance concreto y debe dártelo por escrito quien vaya a hacer la web.</p></details>
+<details><summary>¿Los precios incluyen IVA?</summary><p>No. Los rangos son sin IVA, que es como suelen darse los presupuestos. Para una web hecha en España hay que sumar el 21 %.</p></details>
+<details><summary>¿De dónde salen las cifras?</summary><p>Son estimaciones de DigitalStroke. La tabla completa con todas las cifras que usa la calculadora está publicada en esta misma página.</p></details>
+<details><summary>¿Guardáis lo que marco en la calculadora?</summary><p>No. El cálculo se hace en tu navegador y no se envía a ningún sitio.</p></details>
+
+    <h2>Sigue leyendo</h2>
+    <ul class="related">
+<li><a href="../cuanto-cuesta-una-pagina-web/">¿Cuánto cuesta una página web en 2026?</a></li>
+<li><a href="../precio-pagina-web-autonomos/">Precio de una página web para autónomos</a></li>
+<li><a href="../revision-web-gratis/">Revisión gratis de tu web</a></li>
+    </ul>
+  </article>
+</main>
+
+<footer>
+  <img src="../assets/logo.svg?v=3" alt="DigitalStroke" width="120" height="30">
+  <p>© <span id="y"></span> digitalstroke.es · Tel. <a href="tel:+34676724331" style="color:inherit">676 724 331</a> · <a href="../" style="color:inherit">Inicio</a> · <a href="../aviso-legal/" style="color:inherit">Aviso legal</a> · <a href="../politica-privacidad/" style="color:inherit">Privacidad</a> · <a href="../politica-cookies/" style="color:inherit">Cookies</a></p>
+</footer>
+<script>
+(() => {
+  const BASE = {
+    plantilla: { landing: [0, 200], servicios: [0, 300], grande: [100, 400], tienda: [300, 600] },
+    freelance: { landing: [400, 1200], servicios: [500, 1500], grande: [1500, 4000], tienda: [2000, 6000] },
+    agencia: { landing: [1000, 3000], servicios: [2000, 6000], grande: [4000, 12000], tienda: [5000, 20000] }
+  };
+  const EXTRA = {
+    freelance: { textos: [150, 400], logo: [100, 300], idioma: [150, 500], blog: [150, 400], reservas: [200, 600] },
+    agencia: { textos: [300, 800], logo: [300, 1000], idioma: [400, 1200], blog: [400, 1000], reservas: [500, 1500] }
+  };
+  const box = document.getElementById('calc');
+  const $ = id => document.getElementById(id);
+  const eur = n => n.toLocaleString('es-ES');
+  function calc() {
+    const tipo = box.querySelector('[name=tipo]:checked').value;
+    const quien = box.querySelector('[name=quien]:checked').value;
+    const extras = [...box.querySelectorAll('[name=extra]:checked')].map(e => e.value);
+    let [lo, hi] = BASE[quien][tipo];
+    if (quien === 'plantilla') {
+      $('o-precio').textContent = eur(lo) + ' – ' + eur(hi) + ' € al año';
+      $('o-anual').textContent = 'Es una cuota anual: suele incluir el hosting y, a veces, el dominio.';
+      $('o-nota').textContent = 'Además pones tu tiempo: elegir el diseño, escribir los textos y aprender la herramienta.' +
+        (extras.length ? ' Los extras que has marcado los haces tú o van en planes de pago más caros.' : '');
+    } else {
+      extras.forEach(x => { lo += EXTRA[quien][x][0]; hi += EXTRA[quien][x][1]; });
+      $('o-precio').textContent = eur(lo) + ' – ' + eur(hi) + ' €';
+      $('o-anual').textContent = 'Cada año: 10 – 140 € de dominio y hosting.' + (tipo === 'tienda' ? ' Una tienda suele necesitar además mantenimiento.' : '');
+      $('o-nota').textContent = 'Con el 21 % de IVA: ' + eur(Math.round(lo * 1.21)) + ' – ' + eur(Math.round(hi * 1.21)) + ' €.';
+    }
+    const fuera = tipo === 'tienda' || tipo === 'grande' || extras.some(x => ['idioma', 'blog', 'reservas'].includes(x));
+    $('o-ds').innerHTML = fuera
+      ? '<strong>En DigitalStroke</strong> no hacemos tiendas online, y las webs de más de 5 secciones, el blog, las reservas y los idiomas se presupuestan aparte. <a href="../#contacto">Cuéntanos tu caso</a> y te decimos un precio cerrado.'
+      : '<strong>En DigitalStroke</strong> esta web cuesta <strong>900 € + IVA (1.089 €)</strong>, precio cerrado, con textos y logo sencillo incluidos y entrega en 3 a 5 días laborables. <a href="../#contacto">Pedir mi web →</a>';
+  }
+  box.addEventListener('change', () => { calc(); if (window.gtag) gtag('event', 'calculadora_uso'); });
+  calc();
+})();
+</script>
+<script src="../js/main.js?v=17"></script>
+</body>
+</html>
