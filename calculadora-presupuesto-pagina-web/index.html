@@ -159,7 +159,7 @@
   };
   const box = document.getElementById('calc');
   const $ = id => document.getElementById(id);
-  const eur = n => n.toLocaleString('es-ES');
+  const eur = n => String(n).replace(/\B(?=(\d{3})+$)/g, '.');
   function calc() {
     const tipo = box.querySelector('[name=tipo]:checked').value;
     const quien = box.querySelector('[name=quien]:checked').value;
